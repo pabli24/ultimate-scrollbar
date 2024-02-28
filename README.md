@@ -17,6 +17,8 @@
 
 ![Screenshot GreasyFork](./img/ultimate-scrollbar.png)
 
+Customizable scrollbar for chromium based browsers (Chrome/Edge/Brave/Opera/Vivaldi)
+
 Features:
 - Set custom colors
 - Set custom sizes
