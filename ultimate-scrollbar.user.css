@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         Ultimate ScrollBar
 @namespace    https://github.com/pabli24/
-@version      1.0.1
+@version      1.0.2
 @description  Customizable scrollbar for chromium based browsers (Chrome/Edge/Brave/Opera/Vivaldi) 
 
 @author       Pabli (https://ko-fi.com/pabli)
@@ -54,14 +54,10 @@
 		min-height: a
 		max-height: a
 	
-	if _html
-		:root, html, body, main, #main, #root
-			scrollbar-width: unset i
-			scrollbar-color: unset i
-	else
-		:root, *
-			scrollbar-width: unset i
-			scrollbar-color: unset i
+	h = _html ? ":root, html, body, main, #main, #root" : ":root, *"
+	{h}
+		scrollbar-width: unset i
+		scrollbar-color: unset i
 	
 	:root
 		if _zoom
@@ -72,9 +68,8 @@
 		{p}thumb-border-radius: _zoom ? "calc(%s * (1 / %s))" % (_thumbBorderRadius v(dppx)) : _thumbBorderRadius
 		{p}button-border-width: _zoom ? "calc(%s * (1 / %s))" % (_buttonBorderWidth v(dppx)) : _buttonBorderWidth
 	
-	_html = _html ? ":is(html\, body\, main\, #main\, #root)" : ""
-	
-	{_html}::-webkit-scrollbar
+	h = _html ? ":is(html\, body\, main\, #main\, #root)" : ""
+	{h}::-webkit-scrollbar
 		^[0], &:vertical, &:horizontal
 			wh: v(width) i
 			background: none i
@@ -117,7 +112,7 @@
 	
 	dataSvg = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' "
 	if _button
-		{_html}::-webkit-scrollbar-button
+		{h}::-webkit-scrollbar-button
 			all: initial i
 			display: none i
 			&:single-button
@@ -187,7 +182,7 @@
 							border: v(button-border-width) solid transparent i
 							background: no-repeat center / contain _trackBackgroundColor url(dataSvg +"width='1' height='2' fill='"+ _thumbBackgroundColorActive +"'><polygon points='0,0 0,2 1,1'/></svg>") i
 	else
-		{_html}::-webkit-scrollbar-button
+		{h}::-webkit-scrollbar-button
 			^[0], &:single-button, &:single-button:vertical, &:single-button:horizontal
 				all: initial i
 				display: none i
@@ -198,7 +193,7 @@
 			s("@media (min-resolution:"+ n +"dppx) {:root{"+ p +"dppx:"+ n +"}}")
 
 dark()
-	{_html}::-webkit-scrollbar
+	{h}::-webkit-scrollbar
 			&-thumb, &-thumb:vertical, &-thumb:horizontal
 				background-color: _thumbBackgroundColor2 i
 				box-shadow: inset 0 0 0 v(thumb-box-shadow-width) _thumbBorderColor2 i
@@ -243,7 +238,7 @@ dark()
 
 if _dark
 	@-moz-document regexp("(?!https?:\/\/(www\.duolingo\.com|old\.reddit\.com|duckduckgo\.com)).*")
-		.dark, .dark-bg, .dark-mode, .dark-theme, .theme-dark, [dark], [dark="true"], 
+		.dark, .dark-bg, .dark-mode, .dark-theme, .theme-dark, .tw-dark, [dark], [dark="true"], [theme="dark"],
 		[data-theme="dark"], [data-color-mode="dark"], [data-color-scheme="dark"], [data-scheme="dark"], [data-bs-theme="dark"], [data-ui-theme="dark"],
 		[data-dark-mode="true"], [style*="color-scheme: dark"],
 		[data-darkreader-scheme="dark"], [native-dark-active], [ml-is-active]
