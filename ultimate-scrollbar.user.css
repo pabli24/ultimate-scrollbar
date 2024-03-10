@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         Ultimate ScrollBar
 @namespace    https://github.com/pabli24/
-@version      1.0.2
+@version      1.0.3
 @description  Customizable scrollbar for chromium based browsers (Chrome/Edge/Brave/Opera/Vivaldi) 
 
 @author       Pabli (https://ko-fi.com/pabli)
@@ -237,7 +237,7 @@ dark()
 								background: no-repeat center / contain _trackBackgroundColor2 url(dataSvg +"width='1' height='2' fill='"+ _thumbBackgroundColorActive2 +"'><polygon points='0,0 0,2 1,1'/></svg>") i
 
 if _dark
-	@-moz-document regexp("(?!https?:\/\/(www\.duolingo\.com|old\.reddit\.com|duckduckgo\.com)).*")
+	@-moz-document regexp("(?!https?:\/\/(www\.duolingo\.com|old\.reddit\.com|duckduckgo\.com|minecraft\.wiki|runescape\.wiki)).*")
 		.dark, .dark-bg, .dark-mode, .dark-theme, .theme-dark, .tw-dark, [dark], [dark="true"], [theme="dark"],
 		[data-theme="dark"], [data-color-mode="dark"], [data-color-scheme="dark"], [data-scheme="dark"], [data-bs-theme="dark"], [data-ui-theme="dark"],
 		[data-dark-mode="true"], [style*="color-scheme: dark"],
@@ -259,7 +259,15 @@ if _dark
 	@-moz-document domain("duckduckgo.com")
 		[style*="--theme-bg-global: var(--color-gray100)"]
 			dark()
-
+	
+	@-moz-document domain("minecraft.wiki")
+		html
+			dark()
+	
+	@-moz-document domain("runescape.wiki")
+		html:has(>body:is(.wgl-theme-dark\\\, .wgl-theme-browntown))
+			dark()
+	
 	if _darkWebsite != "example.com, example.org"
 		unless _darkWebsite is a "string"
 			error("Expected a string. DO NOT remove the quotation marks.")
