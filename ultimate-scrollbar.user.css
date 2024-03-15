@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         Ultimate ScrollBar
 @namespace    https://github.com/pabli24/
-@version      1.0.3
+@version      1.0.4
 @description  Customizable scrollbar for chromium based browsers (Chrome/Edge/Brave/Opera/Vivaldi) 
 
 @author       Pabli (https://ko-fi.com/pabli)
@@ -104,8 +104,10 @@
 		&-track, &-track:vertical, &-track:horizontal
 			all: initial i
 			background-color: _trackBackgroundColor i
-			&:hover, &:active, &-piece
+			&:hover, &:active
 				all: initial i
+		&-track-piece, &-track-piece:vertical, &-track-piece:horizontal
+			all: initial i
 		&-corner
 			all: initial i
 			background-color: _cornerBackgroundColor i
@@ -237,35 +239,40 @@ dark()
 								background: no-repeat center / contain _trackBackgroundColor2 url(dataSvg +"width='1' height='2' fill='"+ _thumbBackgroundColorActive2 +"'><polygon points='0,0 0,2 1,1'/></svg>") i
 
 if _dark
-	@-moz-document regexp("(?!https?:\/\/(www\.duolingo\.com|old\.reddit\.com|duckduckgo\.com|minecraft\.wiki|runescape\.wiki)).*")
+	@-moz-document regexp("(?!https?:\/\/(www\.duolingo\.com|duckduckgo\.com|minecraft\.wiki|runescape\.wiki|www\.google\.)).*")
 		.dark, .dark-bg, .dark-mode, .dark-theme, .theme-dark, .tw-dark, [dark], [dark="true"], [theme="dark"],
 		[data-theme="dark"], [data-color-mode="dark"], [data-color-scheme="dark"], [data-scheme="dark"], [data-bs-theme="dark"], [data-ui-theme="dark"],
 		[data-dark-mode="true"], [style*="color-scheme: dark"],
+		html:has(>:is(.theme-default\\\,.theme-contrast\,.skin-modern-dark)>:is(\#mastodon\,.admin-wrapper)),
 		[data-darkreader-scheme="dark"], [native-dark-active], [ml-is-active]
 			dark()
-
+	
+	@-moz-document domain("minecraft.wiki"), domain("steampowered.com"), domain("steamcommunity.com")
+		html
+			dark()
+	
 	@-moz-document regexp("(chrome|moz)-extension://.+")
 		[data-ui-theme="dark"]
 			dark()
-
+	
 	@-moz-document domain("duolingo.com")
 		[data-duo-theme="dark"]
 			dark()
-
+	
 	@-moz-document domain("old.reddit.com"), domain("www.reddit.com")
 		.res-nightmode
 			dark()
-
+	
 	@-moz-document domain("duckduckgo.com")
 		[style*="--theme-bg-global: var(--color-gray100)"]
 			dark()
 	
-	@-moz-document domain("minecraft.wiki")
-		html
-			dark()
-	
 	@-moz-document domain("runescape.wiki")
 		html:has(>body:is(.wgl-theme-dark\\\, .wgl-theme-browntown))
+			dark()
+	
+	@-moz-document url-prefix("https://www.google.")
+		html:has([data-darkmode="true"])
 			dark()
 	
 	if _darkWebsite != "example.com, example.org"
