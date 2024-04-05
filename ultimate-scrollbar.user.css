@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         Ultimate ScrollBar
 @namespace    https://github.com/pabli24/
-@version      1.2.0
+@version      1.2.1
 @description  Customizable scrollbar for Chromium based browsers (Chrome/Edge/Brave/Opera/Vivaldi), with minimal Firefox support
 
 @author       Pabli (https://ko-fi.com/pabli)
@@ -300,6 +300,10 @@ if _dark == Enabled
 	
 	@-moz-document domain("codeberg.org")
 		.theme-codeberg-dark
+			dark()
+	
+	@-moz-document domain("threads.net"), domain("facebook.com")
+		.__fb-dark-mode
 			dark()
 
 if _dark == Enabled || _dark == Manually
