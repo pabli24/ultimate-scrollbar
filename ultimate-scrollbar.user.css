@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         Ultimate ScrollBar
 @namespace    https://github.com/pabli24/
-@version      1.2.1
+@version      1.2.2
 @description  Customizable scrollbar for Chromium based browsers (Chrome/Edge/Brave/Opera/Vivaldi), with minimal Firefox support
 
 @author       Pabli (https://ko-fi.com/pabli)
@@ -254,7 +254,7 @@
 		:root, *
 			scrollbar-color: _thumbBackgroundColor _trackBackgroundColor i
 			if _thin
-				scrollbar-width: thin i
+				scrollbar-width: thin
 		
 		dark()
 			^[0], ^[0] *
@@ -262,10 +262,10 @@
 
 if _dark == Enabled
 	@-moz-document regexp("(?!https?:\/\/(www\.duolingo\.com|duckduckgo\.com|minecraft\.wiki|runescape\.wiki|www\.google\.)).*")
-		.dark, .dark-bg, .dark-mode, .dark-theme, .theme-dark, .tw-dark, [dark], [dark="true"], [theme="dark"],
+		.dark, .dark-bg, .dark-mode, .dark-theme, .darktheme, .theme-dark, .tw-dark, [dark], [dark="true"], [theme="dark"],
 		[data-theme="dark"], [data-color-mode="dark"], [data-color-scheme="dark"], [data-scheme="dark"], [data-bs-theme="dark"], [data-ui-theme="dark"],
 		[data-dark-mode="true"], [style*="color-scheme: dark"],
-		html:has(>:is(.dark\\\, .theme-dark)),
+		html:has(>:is(.dark\\\,.theme-dark\\\,.darktheme)),
 		html:has(>:is(.theme-default\\\,.theme-contrast\\\,.skin-modern-dark)>:is(\#mastodon\\\,.admin-wrapper)),
 		[data-darkreader-scheme="dark"], [native-dark-active], [ml-is-active]
 			dark()
