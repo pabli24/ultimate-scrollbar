@@ -17,15 +17,17 @@
 
 ![Screenshot GreasyFork](./img/ultimate-scrollbar.png)
 
-Customizable scrollbar for chromium based browsers (Chrome/Edge/Brave/Opera/Vivaldi)
+Customizable scrollbar for chromium based browsers (Chrome/Edge/Brave/Opera/Vivaldi), with minimal Firefox support
 
 Features:
+- Hide/show arrow buttons
 - Set custom colors
 - Set custom sizes
 - Set rounded corners
 - Separate theme for websites with dark mode
 - Option to change main scrollbar only
 - Don't change the size of the scrollbar on zoom (ctrl +)
+- Supports both [::-webkit-scrollbar](https://developer.mozilla.org/en-US/docs/Web/CSS/::-webkit-scrollbar) and [scrollbar-color](https://developer.mozilla.org/en-US/docs/Web/CSS/scrollbar-color)
 - Check all the options in the config menu ⚙️
 
 How to:
