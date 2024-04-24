@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         Ultimate ScrollBar
 @namespace    https://github.com/pabli24/
-@version      1.2.2
+@version      1.2.3
 @description  Customizable scrollbar for Chromium based browsers (Chrome/Edge/Brave/Opera/Vivaldi), with minimal Firefox support
 
 @author       Pabli (https://ko-fi.com/pabli)
@@ -27,7 +27,7 @@
 @var          color    _thumbBorderColor            "Thumb border"              hsla(0, 0%, 40%, .3)
 @var          color    _cornerBackgroundColor       "Corner"                    hsla(0, 0%, 30%, .7)
 
-@var          select   _dark                        "Separate style for websites with dark mode (On some sites you may need to change their theme from auto to dark) 🦊" ["Enabled", "Manually:Enabled only on sites added manually below", "All:Enabled on all sites, no matter the theme", "Disabled"]
+@var          select   _dark                        "Separate style for websites with dark mode (On some sites you may need to change their theme from auto to dark) 🦊" ["Enabled", "Manually:Enabled only on sites added manually below", "All:Enabled on all sites", "Disabled"]
 @var          text     _darkWebsite                 "Add sites manually if dark scrollbar isn't working 🦊" "'example.com, example.org'"
 @var          color    _trackBackgroundColor2       "Dark - Track 🦊"           hsla(0, 0%, 0%, 0)
 @var          color    _thumbBackgroundColor2       "Dark - Thumb 🦊"           hsla(0, 0%, 70%, .7)
@@ -261,11 +261,11 @@
 				scrollbar-color: _thumbBackgroundColor2 _trackBackgroundColor2 i
 
 if _dark == Enabled
-	@-moz-document regexp("(?!https?:\/\/(www\.duolingo\.com|duckduckgo\.com|minecraft\.wiki|runescape\.wiki|www\.google\.)).*")
+	@-moz-document regexp(".+")
 		.dark, .dark-bg, .dark-mode, .dark-theme, .darktheme, .theme-dark, .tw-dark, [dark], [dark="true"], [theme="dark"],
 		[data-theme="dark"], [data-color-mode="dark"], [data-color-scheme="dark"], [data-scheme="dark"], [data-bs-theme="dark"], [data-ui-theme="dark"],
 		[data-dark-mode="true"], [style*="color-scheme: dark"],
-		html:has(>:is(.dark\\\,.theme-dark\\\,.darktheme)),
+		html:has(>:is(.dark\\\,.dark-bg\\\,.dark-mode\\\,.dark-theme,\\\,.darktheme\\\,.theme-dark\\\,.theme-fandomdesktop-dark)),
 		html:has(>:is(.theme-default\\\,.theme-contrast\\\,.skin-modern-dark)>:is(\#mastodon\\\,.admin-wrapper)),
 		[data-darkreader-scheme="dark"], [native-dark-active], [ml-is-active]
 			dark()
